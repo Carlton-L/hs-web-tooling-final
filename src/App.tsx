@@ -25,7 +25,7 @@ const App = () => {
       .then((response) => response.json())
       .then((data) => {
         setLoading(false);
-        setInsults([data.insult, ...insults]);
+        setInsults([...insults, data.insult]);
         console.log(insults);
       });
   };
@@ -39,15 +39,15 @@ const App = () => {
         <Button callback={fetchInsult} loading={loading}>
           Generate Insult
         </Button>
-        <ul className="px-10 py-6 w-full max-w-2xl">
-          {loading && (
-            <Card loading={true}>
-              <Loader />
-            </Card>
-          )}
+        <ul className="px-10 py-6 w-full max-w-2xl flex flex-col-reverse">
           {insults.map((element, key) => (
             <Card loading={false}>{element}</Card>
-          ))}
+            ))}
+            {loading && (
+              <Card loading={true}>
+                <Loader />
+              </Card>
+            )}
         </ul>
       </div>
     </main>
