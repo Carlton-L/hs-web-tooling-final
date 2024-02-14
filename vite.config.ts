@@ -11,12 +11,12 @@ export default defineConfig(() => ({
     setupFiles: './tests/setup',
   },
   server: {
-    proxy: {
-      '/generate_insult.php?lang=en&type=json': {
-        target: 'https://evilinsult.com/generate_insult.php?lang=en&type=json', // The URL of the external API
-        changeOrigin: true, // Needed for virtual hosted sites
-        rewrite: (path) => path.replace(/^\/api/, ''), // Remove /api from the path
-      },
-    },
+    // proxy: {
+    //   '/api/insult': {
+    //     target: 'https://insult.mattbas.org/api/insult', // The URL of the external API
+    //     changeOrigin: true, // Needed for virtual hosted sites
+    //     rewrite: (path) => path.replace(/^\/api/, ''), // Remove /api from the path
+    //   },
+    // },
   },
 }));

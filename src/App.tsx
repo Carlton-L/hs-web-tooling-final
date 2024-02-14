@@ -1,7 +1,7 @@
-import { useState } from "react";
-import Button from "./components/button";
-import Card from "./components/card";
-import Loader from "./components/loader";
+import { useState } from 'react';
+import Button from './components/button';
+import Card from './components/card';
+import Loader from './components/loader';
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
@@ -17,33 +17,32 @@ const App = () => {
    */
   const fetchInsult = () => {
     setLoading(true);
-    fetch(`${apiUrl}/generate_insult.php?lang=en&type=json`, {
-      method: "GET",
-      cache: "no-store",
+    fetch(`${apiUrl}/api/insult`, {
+      method: 'GET',
+      cache: 'no-store',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'text/plain',
       },
     })
-      .then((response) => response.json())
+      .then((response) => response.text())
       .then((data) => {
         setLoading(false);
-        setInsults([...insults, data.insult]);
-        console.log(insults);
+        setInsults([...insults, data]);
       });
   };
 
   return (
-    <main className="min-h-screen min-w-screen px-8 py-8 flex">
-      <div className="bg-white text-black min-w-2xl flex flex-col flex-1 justify-start items-center border-solid border-black border-8 max-w-4xl min-h-full">
-        <h1 className="text-4xl font-black my-8 uppercase px-10">
+    <main className='min-h-screen min-w-screen px-8 py-8 flex justify-center'>
+      <div className='bg-white text-black min-w-2xl flex flex-col flex-1 justify-start items-center border-solid border-black border-8 max-w-4xl min-h-full'>
+        <h1 className='text-4xl font-black my-8 uppercase px-10'>
           Insult Generator
         </h1>
         <Button callback={fetchInsult} loading={loading}>
           Generate Insult
         </Button>
-        <ul className="px-10 py-6 w-full max-w-2xl flex flex-col-reverse">
+        <ul className='px-10 py-6 w-full max-w-2xl flex flex-col-reverse'>
           {insults.map((element, index) => (
-            <Card key={index} loading={false} data-testid="loading-card">
+            <Card key={index} loading={false} data-testid='loading-card'>
               {element}
             </Card>
           ))}
