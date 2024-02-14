@@ -1,5 +1,6 @@
 {
   "name": "hs-web-tooling-final",
+  "homepage": "https://carlton.dev",
   "private": false,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +11,7 @@
     "format": "prettier . --write",
     "preview": "vite preview",
     "test": "vitest",
-    "deploy": "tsc && vitest run && vite build && gh-pages -d dist"
+    "deploy": "tsc && vitest run && vite build --base=./ && gh-pages -d dist"
   },
   "dependencies": {
     "@react-spring/web": "^9.7.3",
