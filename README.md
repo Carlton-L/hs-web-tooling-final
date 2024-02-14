@@ -1,6 +1,6 @@
 # INSULT GENERATOR
 
-APP: carlton.dev/hs-web-tooling-final/
+APP: https://carlton.dev/hs-web-tooling-final/
 
 STORYBOOK: https://65cd3ea1e8016448ef413500-tbnkwoxuvu.chromatic.com/
 
