@@ -2,7 +2,7 @@
 
 APP: carlton.dev/hs-web-tooling-final/
 
-STORYBOOK:
+STORYBOOK: https://65cd3ea1e8016448ef413500-tbnkwoxuvu.chromatic.com/
 
 ## HOW TO USE
 
@@ -16,6 +16,8 @@ build: `npm run build`
 
 deploy: `npm run deploy`
 
-run storybook:
+run storybook: `npm run storybook`
 
-build storybook:
+build storybook: `npm run build-storybook`
+
+deploy storybook: `nom run chromatic`
