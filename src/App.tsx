@@ -1,35 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import Button from "./components/button";
+import Card from "./components/card";
+import Loader from "./components/loader";
 
-function App() {
-  const [count, setCount] = useState(0)
+const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+interface InsultState {
+  insults: string[];
 }
 
-export default App
+const App = () => {
+  const [loading, setLoading] = useState<Boolean>(false);
+  const [insults, setInsults] = useState<Array<string>>([]);
+
+  const fetchInsult = () => {
+    setLoading(true);
+    fetch(`${apiUrl}/generate_insult.php?lang=en&type=json`, {
+      method: "GET",
+      cache: "no-store",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setLoading(false);
+        setInsults([data.insult, ...insults]);
+        console.log(insults);
+      });
+  };
+
+  return (
+    <main className="min-h-screen min-w-screen px-8 py-8 flex">
+      <div className="bg-white text-black min-w-2xl flex flex-col flex-1 justify-start items-center border-solid border-black border-8 max-w-4xl min-h-full">
+        <h1 className="text-4xl font-black my-8 uppercase px-10">
+          Insult Generator
+        </h1>
+        <Button callback={fetchInsult} loading={loading}>
+          Generate Insult
+        </Button>
+        <ul className="px-10 py-6 w-full max-w-2xl">
+          {loading && (
+            <Card loading={true}>
+              <Loader />
+            </Card>
+          )}
+          {insults.map((element, key) => (
+            <Card loading={false}>{element}</Card>
+          ))}
+        </ul>
+      </div>
+    </main>
+  );
+};
+
+export default App;
