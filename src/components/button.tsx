@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 
 interface ButtonProps {
-  callback(): () => void;
+  callback: () => void;
   loading: boolean | undefined;
 }
 
