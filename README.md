@@ -1,6 +1,7 @@
 # INSULT GENERATOR
 
 APP: carlton.dev/hs-web-tooling-final/
+
 STORYBOOK:
 
 ## HOW TO USE
