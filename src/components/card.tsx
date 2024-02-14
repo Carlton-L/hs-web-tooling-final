@@ -4,13 +4,14 @@ interface CardProps {
   children:
     | string
     | number
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     | React.ReactElement<any, string | React.JSXElementConstructor<any>>;
-  loading: Boolean;
+  loading: boolean;
 }
 
 /**
  * React component which renders a card containing text content or a React element.
- * @param {boolean} props.loading Boolean representing the loading state 
+ * @param {boolean} props.loading Boolean representing the loading state
  * @returns React component
  */
 const Card = ({ loading, children }: CardProps) => {

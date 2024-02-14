@@ -5,7 +5,7 @@ import Loader from "./components/loader";
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
-type LoadingState = boolean | undefined
+type LoadingState = boolean | undefined;
 
 const App = () => {
   const [loading, setLoading] = useState<LoadingState>(false);
@@ -38,12 +38,14 @@ const App = () => {
         <h1 className="text-4xl font-black my-8 uppercase px-10">
           Insult Generator
         </h1>
-        <Button callback={fetchInsult} loading={loading} >
+        <Button callback={fetchInsult} loading={loading}>
           Generate Insult
         </Button>
         <ul className="px-10 py-6 w-full max-w-2xl flex flex-col-reverse">
           {insults.map((element, index) => (
-            <Card key={index} loading={false} data-testid="loading-card">{element}</Card>
+            <Card key={index} loading={false} data-testid="loading-card">
+              {element}
+            </Card>
           ))}
           {loading && (
             <Card loading={true}>

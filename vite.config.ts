@@ -6,8 +6,8 @@ export default defineConfig(() => ({
   plugins: [react()],
   test: {
     globals: true,
-    environment: 'jsdom',
-    setupFiles: './tests/setup'
+    environment: "jsdom",
+    setupFiles: "./tests/setup",
   },
   server: {
     proxy: {
