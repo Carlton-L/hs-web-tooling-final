@@ -5,14 +5,16 @@ import Loader from "./components/loader";
 
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
-interface InsultState {
-  insults: string[];
-}
+type LoadingState = boolean | undefined
 
 const App = () => {
-  const [loading, setLoading] = useState<Boolean>(false);
+  const [loading, setLoading] = useState<LoadingState>(false);
   const [insults, setInsults] = useState<Array<string>>([]);
 
+  /**
+   * Function which uses fetch and promise chaining to get an insult from a Public API and add it to the state
+   * @returns void
+   */
   const fetchInsult = () => {
     setLoading(true);
     fetch(`${apiUrl}/generate_insult.php?lang=en&type=json`, {
@@ -36,18 +38,18 @@ const App = () => {
         <h1 className="text-4xl font-black my-8 uppercase px-10">
           Insult Generator
         </h1>
-        <Button callback={fetchInsult} loading={loading}>
+        <Button callback={fetchInsult} loading={loading} >
           Generate Insult
         </Button>
         <ul className="px-10 py-6 w-full max-w-2xl flex flex-col-reverse">
-          {insults.map((element, key) => (
-            <Card loading={false}>{element}</Card>
-            ))}
-            {loading && (
-              <Card loading={true}>
-                <Loader />
-              </Card>
-            )}
+          {insults.map((element, index) => (
+            <Card key={index} loading={false} data-testid="loading-card">{element}</Card>
+          ))}
+          {loading && (
+            <Card loading={true}>
+              <Loader />
+            </Card>
+          )}
         </ul>
       </div>
     </main>
