@@ -24,11 +24,11 @@ jobs:
       - name: Install Dependencies
         run: npm i
 
-      - name: Code Linting
-        run: npm run lint
-
       - name: Tests
         run: npm run test
 
       - name: Format check
         run: npm run check-format
+
+      - name: Code Linting
+        run: npm run lint
