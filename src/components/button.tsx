@@ -13,7 +13,7 @@ const Button = (props: PropsWithChildren<ButtonProps>) => {
       className='enabled:bg-black enabled:text-white disabled:bg-gray-400 disabled:text-gray-500 py-2.5 px-5 uppercase font-bold'
       onClick={() => props.callback()}
     >
-      {props.children}
+      {props.children || 'Button'}
     </button>
   );
 };
