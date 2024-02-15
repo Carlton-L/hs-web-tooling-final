@@ -9,7 +9,7 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier . --write",
-    "check-format": "prettier",
+    "check-format": "prettier .",
     "preview": "vite preview",
     "test": "vitest",
     "deploy": "tsc && vitest run && vite build --base=./ && storybook build --output-dir dist/storybook && gh-pages -d dist",
