@@ -20,6 +20,4 @@ run storybook: `npm run storybook`
 
 build storybook: `npm run build-storybook`
 
-deploy storybook: `nom run chromatic`
-
-TODO: Github Actions for testing, linting, formatting, and deploying storybook
+deploy storybook: `npm run chromatic`
